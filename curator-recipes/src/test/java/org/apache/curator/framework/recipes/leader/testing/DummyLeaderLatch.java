@@ -18,6 +18,8 @@
  */
 package org.apache.curator.framework.recipes.leader.testing;
 
+import static org.apache.curator.framework.recipes.leader.LeaderLatch.CloseMode.NOTIFY_LEADER;
+
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -83,7 +85,7 @@ public class DummyLeaderLatch implements LeaderLatchListener{
 				.sessionTimeoutMs(sessionTimeoutMs)
 				.connectionTimeoutMs(connectionTimeoutMs)
 				.build();
-		leaderLatch = new LeaderLatch(curatorFramework, LATCH_PATH, instanceId);
+		leaderLatch = new LeaderLatch(curatorFramework, LATCH_PATH, instanceId, NOTIFY_LEADER);
 		leaderLatch.addListener(this);
 	}
 

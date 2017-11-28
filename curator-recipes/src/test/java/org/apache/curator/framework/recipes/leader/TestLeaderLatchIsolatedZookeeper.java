@@ -64,10 +64,10 @@ public class TestLeaderLatchIsolatedZookeeper {
 
 	@AfterMethod
 	public void afterMethod() throws IOException {
-		DummyLeaderLatch.resetHistory();
 		firstClient.stop();
 		secondClient.stop();
 		cluster.close();
+		DummyLeaderLatch.resetHistory();
 	}
 
 	@Test
